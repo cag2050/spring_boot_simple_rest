@@ -4,8 +4,8 @@
 
 ### SpringBoot项目在IntelliJ IDEA中实现热部署
 ##### 要配置的内容：  
-1.commnad + SHIFT + A --> 查找make project automatically --> 选中  
-2.command + SHIFT + A --> 查找Registry --> 找到并勾选compiler.automake.allow.when.app.running  
+1.commnad + SHIFT + A --> 查找：make project automatically --> 选中  
+2.command + SHIFT + A --> 查找Registry --> 找到并勾选：compiler.automake.allow.when.app.running  
 3.pom.xml文件中加maven依赖：spring-boot-devtools 
 ```
 <dependency>
@@ -23,7 +23,8 @@
     <configuration>
         <!--fork :  如果没有该项配置devtools不会起作用，即应用不会restart -->
         <fork>true</fork>
-        <addResources>true</addResources><!--支持静态文件热部署-->
+        <!--支持静态文件热部署-->
+        <addResources>true</addResources>
     </configuration>
 </plugin>
 ```
