@@ -9,6 +9,6 @@ public class HelloWorld {
 
     @RequestMapping(value = {"/", "/hello"}, method = {RequestMethod.GET, RequestMethod.POST}, produces = {"application/json; charset=UTF-8"})
     public String helloWorld() {
-        return "{\'word\':\'hello world\'}";
+        return "{\"word999\":\"hello world\"}";
     }
 }
