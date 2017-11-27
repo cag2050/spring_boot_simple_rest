@@ -36,13 +36,13 @@ public class JacksonDemo {
         allMap.put("elasped", elasped + "ms");
 
         ObjectMapper mapper = new ObjectMapper();
-        String str = null;
+        String returnStr = null;
         try {
-            str = mapper.writeValueAsString(allMap);
+            returnStr = mapper.writeValueAsString(allMap);
         } catch (JsonProcessingException e) {
             System.out.println(e);
             e.printStackTrace();
         }
-        return str;
+        return returnStr;
     }
 }
