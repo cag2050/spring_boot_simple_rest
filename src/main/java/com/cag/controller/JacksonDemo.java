@@ -17,16 +17,32 @@ public class JacksonDemo {
     public String jackson(
             @RequestParam String param1,
             @RequestParam(name = "param2_data", required = false) String param2Data,
-            @RequestParam(defaultValue = "default_value") String param3) throws JsonProcessingException {
-        System.out.println(param1);
-        System.out.println(param2Data);
-        System.out.println(param3);
+            @RequestParam(defaultValue = "default_value") String param3) {
+        Long startTime = System.currentTimeMillis();
+
         HashMap<String, String> paramsMap = new LinkedHashMap<>();
         paramsMap.put("param1", param1);
         paramsMap.put("param2", param2Data);
         paramsMap.put("param3", param3);
+
+        HashMap<String, String> dataMap = new HashMap<>();
+        dataMap.put("key1","value1");
+
+        HashMap allMap = new HashMap();
+        allMap.put("params", paramsMap);
+        allMap.put("data", dataMap);
+        allMap.put("status", "success");
+        Long elasped = System.currentTimeMillis() - startTime;
+        allMap.put("elasped", elasped + "ms");
+
         ObjectMapper mapper = new ObjectMapper();
-        String str = mapper.writeValueAsString(paramsMap);
+        String str = null;
+        try {
+            str = mapper.writeValueAsString(allMap);
+        } catch (JsonProcessingException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
         return str;
     }
 }
