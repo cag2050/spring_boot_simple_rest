@@ -12,11 +12,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = MyException.class)
     @ResponseBody
     public ErrorInfo<String> jsonErrorHandler(HttpServletRequest request, MyException e) {
-        ErrorInfo<String> r = new ErrorInfo<>();
-        r.setMessage(e.getMessage());
-        r.setCode(ErrorInfo.ERROR);
-        r.setData("Some Data");
-        r.setUrl(request.getRequestURL().toString());
-        return r;
+        ErrorInfo<String> errorInfo = new ErrorInfo<>();
+        errorInfo.setMessage(e.getMessage());
+        errorInfo.setCode(ErrorInfo.ERROR);
+        errorInfo.setData("Some Data");
+        errorInfo.setUrl(request.getRequestURL().toString());
+        return errorInfo;
     }
 }
